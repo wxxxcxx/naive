@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  naive:
+    container_name: naive
+    image: wxxxcxx/naive:latest
+    environment:
+      - DOMAIN=${DOMAIN}
+      - EMAIL=${EMAIL}
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - UPSTREAM=${UPSTREAM}
+    ports:
+      - 80:80
+      - 443:443
+
+  alist:
+    container_name: alist
+    image: xhofe/alist:latest
+    volumes:
+      - alist:/opt/alist/data
+
+volumes:
+  alist:
+
+  

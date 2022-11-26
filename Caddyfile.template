@@ -1,0 +1,13 @@
+{
+        order forward_proxy before reverse_proxy
+}
+:443, ${DOMAIN} {
+        tls ${EMAIL}
+        forward_proxy {
+                basic_auth ${USERNAME} ${PASSWORD}
+                hide_ip
+                hide_via
+                probe_resistance
+        }
+        reverse_proxy ${UPSTREAM}
+}
